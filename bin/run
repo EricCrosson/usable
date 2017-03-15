@@ -2,10 +2,13 @@
 # Written by Eric Crosson
 # 2017-03-15
 #
-# This script will invoke the target-repository's /bin/apply script.
+# This script will download the specified (simple) target and invoke
+# the specified script inside.
 
 set -o nounset
 
+# FIXME: extract duplicated code
+# TODO: bring under test
 most_recently_created_dir() {
     find -mindepth 1 -maxdepth 1 -type d -printf '%Ts\t%p\n' \
         | sort -nr \
@@ -14,13 +17,16 @@ most_recently_created_dir() {
 }
 
 init() {
-    git clone "$@"
+    git clone "${target_repo}"
     pushd "$(most_recently_created_dir)" 2>/dev/null
 }
 
 main() {
-    bin/apply
+    "${target_script}"
 }
 
-init "$@" &>/dev/null
-main "$@"
+readonly target_repo=$1; shift
+readonly target_script=$1; shift
+
+init &>/dev/null
+main

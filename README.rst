@@ -16,6 +16,16 @@ directory.
 
 apply
     Clone the specified repository and invoke its ``/bin/apply`` script.
+    Arbitrary arguments to ``git clone`` are supported, but no other
+    arguments are allowed.
+
+run
+    Similar to ``apply``, but only accepts one argument to ``git
+    clone``: the target repository.  Additional arguments indicate the
+    script inside the repository to invoke and any arguments for it.
+    Use ``run`` over ``apply`` when the clone invocation is simple but
+    the script invocation is not
+
 
 To use any of the available commands, execute the following in your
 terminal::
