@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Written by Eric Crosson
+# 2017-03-15
+#
+# This script will invoke the target-repository's /bin/apply script.
+
+set -o nounset
+
+most_recently_created_dir() {
+    find -mindepth 1 -maxdepth 1 -type d -printf '%Ts\t%p\n' \
+        | sort -nr \
+        | head -1 \
+        | cut -f2
+}
+
+init() {
+    git clone "$@"
+    pushd "$(most_recently_created_dir)" 2>/dev/null
+}
+
+main() {
+    bin/apply
+}
+
+
+init "$@" &>/dev/null
+main "$@"
