@@ -22,13 +22,12 @@ init() {
 }
 
 main() {
-    "${target_script}"
+    "$@"
 }
 
 # TODO: check that $# -eq 2 and display friendly message
 
 readonly target_repo=$1; shift
-readonly target_script=$1; shift
 
 init &>/dev/null
-main
+main "$@"
