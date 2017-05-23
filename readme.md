@@ -11,8 +11,12 @@ stability.
 
 ## API
 
-Note that all target projects will be cloned into the current working
+Note that
+
+- all target projects will be cloned into the current working
 directory.
+
+- all commands adhere to the standard arguments
 
 ### apply
 
@@ -27,6 +31,13 @@ repository to invoke and any arguments for it.
 
 > Tip: Use `run` over `apply` when the clone invocation is simple but
 > the script invocation is not
+
+## Standard arguments
+
+### --clean
+
+Remove the target project from disk if the API call completes
+successfully.
 
 ## Use
 
