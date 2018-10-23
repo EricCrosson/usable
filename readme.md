@@ -21,9 +21,9 @@ Arguments are passed to `git clone`.
 
 ### run
 
-Similar to `apply`, but only accepts one argument to `git clone` the
-target repository. Additional arguments indicate the script inside the
-repository to invoke and any arguments for it.
+Similar to `apply`, but only accepts one argument to `git clone` --
+the target repository. Additional arguments indicate the script inside
+the repository to invoke and any arguments for it.
 
 > Tip: Use `run` over `apply` when the clone invocation is simple but
 > the script invocation is not
